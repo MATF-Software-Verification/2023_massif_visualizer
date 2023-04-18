@@ -1,0 +1,62 @@
+{
+  "name": "electron-vite-project",
+  "version": "2.2.0",
+  "main": "dist-electron/main/index.js",
+  "description": "Electron Vite React boilerplate.",
+  "author": "草鞋没号 <308487730@qq.com>",
+  "license": "MIT",
+  "private": true,
+  "debug": {
+    "env": {
+      "VITE_DEV_SERVER_URL": "http://127.0.0.1:7777/"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build && electron-builder",
+    "preview": "vite preview",
+    "pree2e": "vite build --mode=test",
+    "e2e": "playwright test",
+    "lint": "eslint ./src --ext .jsx,.js,.ts,.tsx --quiet --ignore-path ./.gitignore",
+    "lint:fix": "eslint ./src --ext .jsx,.js,.ts,.tsx --quiet --fix --ignore-path ./.gitignore",
+    "format": "prettier --loglevel warn --check \"./**/*.{js,jsx,ts,tsx,css,md,json}\" ",
+    "format:fix": "prettier --loglevel warn --write \"./**/*.{js,jsx,ts,tsx,css,md,json}\" ",
+    "type-check": "tsc"
+  },
+  "dependencies": {
+    "@fontsource/kreon": "4.5.12",
+    "electron-updater": "^5.3.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.32.0",
+    "@tanstack/eslint-plugin-query": "^4.24.5",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.51.0",
+    "@typescript-eslint/parser": "^5.51.0",
+    "@vitejs/plugin-react": "^3.1.0",
+    "autoprefixer": "10.4.14",
+    "electron": "^23.2.0",
+    "electron-builder": "^23.6.0",
+    "eslint": "^8.33.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "postcss": "8.4.21",
+    "prettier": "^2.8.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass": "^1.60.0",
+    "tailwindcss": "3.3.1",
+    "typescript": "^5.0.2",
+    "vite": "^4.1.4",
+    "vite-plugin-electron": "^0.11.1",
+    "vite-plugin-electron-renderer": "^0.13.14"
+  },
+  "engines": {
+    "node": "^14.18.0 || >=16.0.0"
+  }
+}
