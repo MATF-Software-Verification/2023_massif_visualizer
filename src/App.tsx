@@ -1,7 +1,14 @@
-import React from "react";
+import React, { Suspense } from "react";
+import { RouterProvider } from "react-router-dom";
+
+import { router } from "./SiteRoutes";
 
 const App = () => {
-  return <div className="flex h-screen w-screen justify-center items-center text-5xl">App</div>;
+  return (
+    <Suspense>
+      <RouterProvider router={router} />
+    </Suspense>
+  );
 };
 
 export default App;

@@ -25,7 +25,13 @@
   },
   "dependencies": {
     "@fontsource/kreon": "4.5.12",
-    "electron-updater": "^5.3.0"
+    "clsx": "^1.2.1",
+    "electron-updater": "^5.3.0",
+    "fs": "0.0.1-security",
+    "react-charts": "3.0.0-beta.54",
+    "react-dropzone": "^14.2.3",
+    "react-router-dom": "^6.11.0",
+    "tailwind-merge": "^1.12.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.32.0",
@@ -37,7 +43,7 @@
     "@vitejs/plugin-react": "^3.1.0",
     "autoprefixer": "10.4.14",
     "electron": "^23.2.0",
-    "electron-builder": "^23.6.0",
+    "electron-builder": "^24.3.0",
     "eslint": "^8.33.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-import": "^2.27.5",
