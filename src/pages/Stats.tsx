@@ -47,7 +47,7 @@ const Stats = () => {
         >
           Home
         </div>
-        <div className="w-full flex flex-grow">
+        <div className="w-full h-full">
           {massifOutputs.length > 0 && range.upper > range.lower && (
             <LineChart
               data={massifOutputs.map((output, i) => ({
@@ -68,7 +68,9 @@ const Stats = () => {
               id="rangeLower"
               className="w-20 ml-2"
               min="0"
-              onChange={(ev) => setRange({ ...range, lower: Number.parseInt(ev.target.value) })}
+              onChange={(ev) =>
+                setRange({ ...range, lower: Number.parseInt(ev.target.value) || 0 })
+              }
             />
           </label>
           <label htmlFor="rangeUpper">
@@ -78,7 +80,13 @@ const Stats = () => {
               id="rangeUpper"
               className="w-20 ml-2"
               min="0"
-              onChange={(ev) => setRange({ ...range, upper: Number.parseInt(ev.target.value) })}
+              onChange={(ev) => {
+                if (ev.target.value === "") {
+                  setRange({ ...range, upper: Infinity });
+                } else {
+                  setRange({ ...range, upper: Number.parseInt(ev.target.value) });
+                }
+              }}
             />
           </label>
         </div>

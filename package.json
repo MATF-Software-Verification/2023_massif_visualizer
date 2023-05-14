@@ -25,9 +25,11 @@
   },
   "dependencies": {
     "@fontsource/kreon": "4.5.12",
+    "chart.js": "^4.3.0",
     "clsx": "^1.2.1",
     "electron-updater": "^5.3.0",
     "fs": "0.0.1-security",
+    "react-chartjs-2": "^5.2.0",
     "react-charts": "3.0.0-beta.54",
     "react-dropzone": "^14.2.3",
     "react-router-dom": "^6.11.0",
@@ -36,6 +38,7 @@
   "devDependencies": {
     "@playwright/test": "^1.32.0",
     "@tanstack/eslint-plugin-query": "^4.24.5",
+    "@types/node": "^20.1.4",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@typescript-eslint/eslint-plugin": "^5.51.0",

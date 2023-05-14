@@ -1,7 +1,19 @@
-import React from "react";
-import { AxisOptions, Chart, UserSerie } from "react-charts";
+import {
+  CategoryScale,
+  Chart as ChartJS,
+  Legend,
+  LinearScale,
+  LineElement,
+  PointElement,
+  Title,
+  Tooltip,
+} from "chart.js";
+import { Line } from "react-chartjs-2";
 
 import { MassifSnapshot } from "@/types/massif";
+import { randomColors } from "@/utils/randomColors";
+
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 export interface SnapshotMemorySeries {
   label: string;
@@ -13,31 +25,27 @@ const LineChart = (props: { data: SnapshotMemorySeries[] }) => {
 
   data = data.filter((datum) => datum.data.length > 0);
 
-  const primaryAxis = React.useMemo<AxisOptions<MassifSnapshot>>(
-    () => ({
-      getValue: (datum) => datum.id,
-    }),
-    [],
-  );
-
-  const secondaryAxes = React.useMemo<AxisOptions<MassifSnapshot>[]>(
-    () => [
-      {
-        getValue: (datum) => datum.mem_heap,
-      },
-    ],
-    [],
-  );
-
-  // FIXME: make tooltip follow cursor instead of staying in top left
-  if (data.length === 0) return <></>;
-
   return (
-    <Chart
+    <Line
       options={{
-        data,
-        primaryAxis,
-        secondaryAxes,
+        responsive: true,
+        maintainAspectRatio: false,
+      }}
+      data={{
+        labels: Array.from(
+          new Set(
+            data
+              .map((datum) => datum.data.map((snapshot) => snapshot.id))
+              .reduce((acc, curr) => acc.concat(curr), []),
+          ),
+        ),
+        datasets: data.map((datum, index) => ({
+          label: datum.label,
+          data: datum.data.map((snapshot) => snapshot.mem_heap),
+          fill: false,
+          borderColor: randomColors[index % 10],
+          tension: 0.1,
+        })),
       }}
     />
   );
