@@ -6,8 +6,10 @@ export const compileAndParseMassif: (
   sourceFilePath: string,
   setMassifOutputs: React.Dispatch<React.SetStateAction<MassifOutput[]>>,
 ) => void = (sourceFilePath, setMassifOutputs) => {
+  // get directory of source file
+  const outputFolderPath = sourceFilePath.split("/").slice(0, -1).join("/");
   //compile
-  exec(`gcc -g ${sourceFilePath} -o temp/a.out`, (error, stdout, stderr) => {
+  exec(`gcc -g ${sourceFilePath} -o ${outputFolderPath}/a.out`, (error, stdout, stderr) => {
     if (error) {
       console.log(`error: ${error.message}`);
     } else if (stderr) {
@@ -16,7 +18,7 @@ export const compileAndParseMassif: (
       // console.log(stdout);
     }
     exec(
-      `valgrind --tool=massif --massif-out-file=temp/sourceMassif.out.0 temp/a.out`,
+      `valgrind --tool=massif --massif-out-file=${outputFolderPath}/sourceMassif.out.0 ${outputFolderPath}/a.out`,
       (error, stdout, stderr) => {
         if (error) {
           console.log(`error: ${error.message}`);
@@ -25,7 +27,7 @@ export const compileAndParseMassif: (
         } else {
           // console.log(stdout);
         }
-        parseMassif(["temp/sourceMassif.out.0"], setMassifOutputs);
+        parseMassif([`${outputFolderPath}/sourceMassif.out.0`], setMassifOutputs);
       },
     );
   });
