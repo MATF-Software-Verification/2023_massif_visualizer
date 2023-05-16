@@ -20,8 +20,8 @@ const SnapshotTree = ({
   const [snapshots, setSnapshots] = React.useState<MassifSnapshot[]>(_snapshots);
 
   React.useEffect(() => {
-    setSnapshots(_snapshots);
-  }, [_snapshots]);
+    if (_snapshots.length !== snapshots.length) setSnapshots(_snapshots);
+  }, [_snapshots, snapshots.length]);
 
   const openSnapshot = (snapshot: MassifSnapshot) => {
     if (snapshot.heap_tree) {
