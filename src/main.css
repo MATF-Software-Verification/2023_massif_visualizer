@@ -84,7 +84,7 @@ body::-webkit-scrollbar {
     @apply border-border;
   }
   .app_root {
-    @apply min-h-screen overflow-auto bg-background text-foreground font-sans antialiased;
+    @apply max-h-screen overflow-hidden bg-background text-foreground font-sans antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
