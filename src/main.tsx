@@ -1,10 +1,10 @@
 import "./main.css";
-import "@fontsource/kreon";
-import "@fontsource/kreon/300.css";
-import "@fontsource/kreon/400.css";
-import "@fontsource/kreon/500.css";
-import "@fontsource/kreon/600.css";
-import "@fontsource/kreon/700.css";
+import "@fontsource/inter";
+import "@fontsource/inter/300.css";
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
+import "@fontsource/inter/600.css";
+import "@fontsource/inter/700.css";
 
 import React from "react";
 import ReactDOM from "react-dom/client";
