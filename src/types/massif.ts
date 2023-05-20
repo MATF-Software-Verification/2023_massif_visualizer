@@ -31,3 +31,8 @@ export interface MassifOutput {
   snapshots: MassifSnapshot[];
   time_unit: string;
 }
+
+export interface MassifOutputsWithError {
+  massifOutputs: MassifOutput[];
+  error?: string;
+}

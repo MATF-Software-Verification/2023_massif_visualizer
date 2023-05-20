@@ -1,50 +1,50 @@
 import { exec } from "child_process";
 
-import { MassifOutput } from "@/types/massif";
+import { MassifOutput, MassifOutputsWithError } from "@/types/massif";
+
+const logStdErr = (from: string, stderr: string) => {
+  if (stderr) {
+    console.warn(`from: ${from}\nstderr: ${stderr}`);
+  }
+};
 
 export const compileAndParseMassif: (
   sourceFilePath: string,
-  setMassifOutputs: React.Dispatch<React.SetStateAction<MassifOutput[]>>,
-) => void = (sourceFilePath, setMassifOutputs) => {
+  setMassifOutputsWithError: React.Dispatch<React.SetStateAction<MassifOutputsWithError>>,
+) => void = (sourceFilePath, setMassifOutputsWithError) => {
+  // get directory of source file
+  const outputFolderPath = sourceFilePath.split("/").slice(0, -1).join("/");
   //compile
-  exec(`gcc -g ${sourceFilePath} -o temp/a.out`, (error, stdout, stderr) => {
+  exec(`gcc -g ${sourceFilePath} -o ${outputFolderPath}/a.out`, (error, stdout, stderr) => {
     if (error) {
-      console.log(`error: ${error.message}`);
-    } else if (stderr) {
-      console.log(stderr);
+      setMassifOutputsWithError({ error: error.message, massifOutputs: [] });
     } else {
-      // console.log(stdout);
+      logStdErr("gcc", stderr);
+      exec(
+        `valgrind --tool=massif --massif-out-file=${outputFolderPath}/sourceMassif.out.0 ${outputFolderPath}/a.out`,
+        (error, stdout, stderr) => {
+          if (error) {
+            setMassifOutputsWithError({ error: error.message, massifOutputs: [] });
+          } else {
+            logStdErr("massif", stderr);
+            parseMassif([`${outputFolderPath}/sourceMassif.out.0`], setMassifOutputsWithError);
+          }
+        },
+      );
     }
-    exec(
-      `valgrind --tool=massif --massif-out-file=temp/sourceMassif.out.0 temp/a.out`,
-      (error, stdout, stderr) => {
-        if (error) {
-          console.log(`error: ${error.message}`);
-        } else if (stderr) {
-          console.log(stderr);
-        } else {
-          // console.log(stdout);
-        }
-        parseMassif(["temp/sourceMassif.out.0"], setMassifOutputs);
-      },
-    );
   });
-  //run valgrind for executable
-  //parseMassif
 };
 
 export const parseMassif: (
   massifFilePaths: string[],
-  setMassifOutputs: React.Dispatch<React.SetStateAction<MassifOutput[]>>,
-) => void = (massifFilePaths, setMassifOutputs) => {
+  setMassifOutputsWithError: React.Dispatch<React.SetStateAction<MassifOutputsWithError>>,
+) => void = (massifFilePaths, setMassifOutputsWithError) => {
   exec(`python3 src/utils/parser.py ${massifFilePaths.join(" ")}`, (error, stdout, stderr) => {
     if (error) {
-      console.log(`error: ${error.message}`);
-    } else if (stderr) {
-      console.log(stderr);
+      setMassifOutputsWithError({ error: error.message, massifOutputs: [] });
     } else {
-      // console.log(stdout);
-      setMassifOutputs(JSON.parse(stdout) as MassifOutput[]);
+      logStdErr("parser", stderr);
+      setMassifOutputsWithError({ massifOutputs: JSON.parse(stdout) as MassifOutput[] });
     }
   });
 };
