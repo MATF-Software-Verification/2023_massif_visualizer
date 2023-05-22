@@ -15,7 +15,9 @@ const SnapshotTreeNode = ({
   setSelectedHeapNode,
 }: SnapshotTreeNodeProps) => {
   const labelText = node.details
-    ? `File: ${node.details.file} | Function: ${node.details.function} | Line: ${node.details.line}`
+    ? `File: ${node.details.file ?? "Unknown"} | Function: ${
+        node.details.function ?? "Unknown"
+      } | Line: ${node.details.line ?? "Unknown"}`
     : "Unknown";
 
   return (

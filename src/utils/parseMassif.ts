@@ -12,23 +12,22 @@ export const compileAndParseMassif: (
   sourceFilePath: string,
   setMassifOutputsWithError: React.Dispatch<React.SetStateAction<MassifOutputsWithError>>,
 ) => void = (sourceFilePath, setMassifOutputsWithError) => {
-  const outputFolderPath = sourceFilePath.split("/").slice(0, -1).join("/");
   const fileExtension = sourceFilePath.split(".").slice(-1)[0];
   const compiler = fileExtension === "c" ? "gcc" : "g++";
 
-  exec(`${compiler} -g ${sourceFilePath} -o ${outputFolderPath}/a.out`, (error, stdout, stderr) => {
+  exec(`${compiler} -g ${sourceFilePath} -o ./temp/a.out`, (error, stdout, stderr) => {
     if (error) {
       setMassifOutputsWithError({ error: error.message, massifOutputs: [] });
     } else {
       logStdErr(compiler, stderr);
       exec(
-        `valgrind --tool=massif --massif-out-file=${outputFolderPath}/sourceMassif.out.0 ${outputFolderPath}/a.out`,
+        `valgrind --tool=massif --massif-out-file=./temp/sourceMassif.out.0 ./temp/a.out`,
         (error, stdout, stderr) => {
           if (error) {
             setMassifOutputsWithError({ error: error.message, massifOutputs: [] });
           } else {
             logStdErr("massif", stderr);
-            parseMassif([`${outputFolderPath}/sourceMassif.out.0`], setMassifOutputsWithError);
+            parseMassif([`./temp/sourceMassif.out.0`], setMassifOutputsWithError);
           }
         },
       );

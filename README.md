@@ -52,7 +52,7 @@ It's recommended to use [VSCode](https://code.visualstudio.com/) as your editor 
 ## Usage Example
 
 | ![Screenshot1](https://github.com/MATF-Software-Verification/2023_massif_visualizer/assets/76535188/6bf382f5-8ce2-44bd-8777-79f3c24906cd) | ![Screenshot2](https://github.com/MATF-Software-Verification/2023_massif_visualizer/assets/76535188/356b80a0-3067-4d12-a8c1-24d2f6fd4640) |
-| --- | --- |
+| ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 
 ### Single C/C++ File Analysis
 
@@ -81,3 +81,24 @@ It's recommended to use [VSCode](https://code.visualstudio.com/) as your editor 
 ![Screenshot4](https://github.com/MATF-Software-Verification/2023_massif_visualizer/assets/76535188/a1d8100a-d91a-4c40-b04b-1d439f41d536)
 
 By utilizing this application, you can gain valuable insights into memory usage patterns, detect memory leaks, and optimize your C or C++ programs for better performance. Happy debugging!
+
+## Test samples
+
+In the directory `samples` you can find some test samples for the application. You can use the ones inside the subdirectory `c-cpp` to test the application with single C/C++ files, and the ones inside the subdirectory `massif` to test the application with multiple Massif files. Structure of the directory is shown below:
+
+```
+samples
+├── c-cpp
+│   ├── c
+│   │   ├── c1.c
+│   │   ├── c2.c
+│   │   └── c3.c
+│   └── cpp
+│       ├── cpp1.cpp
+│       ├── cpp2.cpp
+│       └── cpp3.cpp
+└── massif
+    ├── massif1.out
+    ├── massif2.out
+    └── massif3.out
+```
