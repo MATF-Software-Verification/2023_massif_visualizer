@@ -30,6 +30,28 @@ const LineChart = (props: { data: SnapshotMemorySeries[] }) => {
       options={{
         responsive: true,
         maintainAspectRatio: false,
+        scales: {
+          x: {
+            title: {
+              display: true,
+              text: "Snapshot",
+              padding: 10,
+              font: {
+                size: 16,
+              },
+            },
+          },
+          y: {
+            title: {
+              display: true,
+              text: "Heap Memory (B)",
+              padding: 10,
+              font: {
+                size: 16,
+              },
+            },
+          },
+        },
       }}
       data={{
         labels: Array.from(

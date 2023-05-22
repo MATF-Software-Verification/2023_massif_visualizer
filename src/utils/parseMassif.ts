@@ -12,14 +12,15 @@ export const compileAndParseMassif: (
   sourceFilePath: string,
   setMassifOutputsWithError: React.Dispatch<React.SetStateAction<MassifOutputsWithError>>,
 ) => void = (sourceFilePath, setMassifOutputsWithError) => {
-  // get directory of source file
   const outputFolderPath = sourceFilePath.split("/").slice(0, -1).join("/");
-  //compile
-  exec(`gcc -g ${sourceFilePath} -o ${outputFolderPath}/a.out`, (error, stdout, stderr) => {
+  const fileExtension = sourceFilePath.split(".").slice(-1)[0];
+  const compiler = fileExtension === "c" ? "gcc" : "g++";
+
+  exec(`${compiler} -g ${sourceFilePath} -o ${outputFolderPath}/a.out`, (error, stdout, stderr) => {
     if (error) {
       setMassifOutputsWithError({ error: error.message, massifOutputs: [] });
     } else {
-      logStdErr("gcc", stderr);
+      logStdErr(compiler, stderr);
       exec(
         `valgrind --tool=massif --massif-out-file=${outputFolderPath}/sourceMassif.out.0 ${outputFolderPath}/a.out`,
         (error, stdout, stderr) => {

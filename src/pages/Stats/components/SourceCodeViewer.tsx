@@ -12,13 +12,13 @@ const SourceCodeViewer = ({ sourceCode, selectedHeapNode }: ISourceCodeViewerPro
   return (
     <div
       className={cn(
-        "h-full flex flex-row bg-foreground text-backgroundoverflow-auto",
+        "h-full flex flex-row bg-foreground text-background overflow-auto",
         sourceCode === "" ? "hidden" : "",
       )}
     >
       <Highlight code={sourceCode} language="cpp" theme={themes.vsDark}>
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
-          <pre style={style} className={cn(className, "h-full w-full p-3 pr-40")}>
+          <pre style={style} className={cn(className, "h-full w-full p-3 pr-20")}>
             {tokens.map((line, i) => (
               <div
                 key={i}

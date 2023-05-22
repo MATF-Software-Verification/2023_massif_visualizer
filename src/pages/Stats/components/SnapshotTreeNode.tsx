@@ -30,7 +30,7 @@ const SnapshotTreeNode = ({
         <div className="flex w-full justify-between">
           <div className="flex items-center">
             {node.children.length > 0 && <ChevronDown className="-ml-2 w-5 h-5" />}
-            <p> {labelText}</p>
+            <p className="break-all"> {labelText}</p>
           </div>
           <p>Memory: {node.nbytes}</p>
         </div>

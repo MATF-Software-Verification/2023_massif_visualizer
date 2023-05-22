@@ -1,6 +1,15 @@
 # 2023_massif_visualizer
 
+## Project Description
+
 Welcome to the Massif Visualizer repository. The goal of this project is to create a desktop app that will visualize the output of the [Massif](https://valgrind.org/docs/manual/ms-manual.html) tool. The app will be built using [Electron](https://www.electronjs.org/) and [React](https://reactjs.org/).
+
+People working on this project:
+Pavle Cvejović, 1068/2022
+Viktor Novaković, 1062/2022
+
+Course professor: Milena Vujošević-Janičić
+Course assistant: Ivan Ristović
 
 ## Tech stack
 
@@ -39,3 +48,29 @@ To start the development server, run `pnpm run dev`. This will start the develop
 It's recommended to use [VSCode](https://code.visualstudio.com/) as your editor since it's configured to use the same settings as the project inside `.vscode/settings.json`. It's also recommended to use [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint), [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) and [Prettier ESLint](https://marketplace.visualstudio.com/items?itemName=rvest.vs-code-prettier-eslint) extensions for VSCode for automatic code formatting and linting on file save. You don't need any additional setup since the extensions are configured to use the same settings as the ones used by the project inside `.vscode/settings.json`.
 
 **NOTE:** I have setup alias imports for the `src` folder which makes imports shorter and easier to read. This means that you can import files from these folders using the `@` alias. For example, if you are in a deeply nested folder and you want to import component named `Component` from the `components` folder, you can do it like this: `import Component from '@/components/Component'`. This is the same as doing `import Component from '../../../components/Component'`.
+
+## Usage Example
+
+### Single C/C++ File Analysis
+
+1. Choose the option to upload a single C or C++ source file.
+2. Select the desired file by the file picker.
+3. Click on the `Inspect` button to compile the file and execute Massif.
+4. The Massif tool will collect memory usage data during execution.
+5. The application will parse and format the Massif output, generating a graph on the Stats screen.
+6. On the Stats screen, the x-axis represents snapshots of the file, and the y-axis represents memory usage in bytes.
+7. Use the snapshot range slider to focus on specific sections of the execution.
+8. Select a snapshot that has a location in the code as a label to view the corresponding code in the code editor on the side.
+9. Analyze the graph and code to identify memory-related issues and optimize your program.
+
+### Multiple Massif Files Comparison
+
+1. Choose the option to upload Massif file(s).
+2. Select the desired file(s) by the file picker.
+3. Click on the `Compare` button to load and process the files.
+4. The application will generate a graph on the Stats screen, representing memory usage for each Massif file.
+5. On the Stats screen, each Massif file will have a separate line in the graph.
+6. Select a specific Massif file from the dropdown to view its snapshots.
+7. Use the snapshot range slider to focus on specific sections of the execution for all files.
+
+By utilizing this application, you can gain valuable insights into memory usage patterns, detect memory leaks, and optimize your C or C++ programs for better performance. Happy debugging!

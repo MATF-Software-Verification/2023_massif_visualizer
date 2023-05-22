@@ -45,6 +45,7 @@ const indexHtml = join(process.env.DIST, "index.html");
 
 async function createWindow() {
   win = new BrowserWindow({
+    autoHideMenuBar: true,
     title: "Main window",
     icon: join(process.env.PUBLIC, "favicon.ico"),
     height: 720,
@@ -60,6 +61,8 @@ async function createWindow() {
       contextIsolation: false,
     },
   });
+
+  win.removeMenu();
 
   if (process.env.VITE_DEV_SERVER_URL) {
     // electron-vite-vue#298
