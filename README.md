@@ -89,16 +89,13 @@ In the directory `samples` you can find some test samples for the application. Y
 ```
 samples
 ├── c-cpp
-│   ├── c
-│   │   ├── c1.c
-│   │   ├── c2.c
-│   │   └── c3.c
-│   └── cpp
-│       ├── cpp1.cpp
-│       ├── cpp2.cpp
-│       └── cpp3.cpp
+│   ├── 1.c
+│   └── 1.cpp
 └── massif
-    ├── massif1.out
-    ├── massif2.out
-    └── massif3.out
+    ├── massif.out.32406
+    ├── massif.out.huge
+    └── massif.out.kate2
+    └── massif.out.kate3
+    └── massif.out.ktorrent
+    └── massif.out.stack
 ```
