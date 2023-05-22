@@ -51,6 +51,9 @@ It's recommended to use [VSCode](https://code.visualstudio.com/) as your editor 
 
 ## Usage Example
 
+| ![Screenshot1](https://github.com/MATF-Software-Verification/2023_massif_visualizer/assets/76535188/6bf382f5-8ce2-44bd-8777-79f3c24906cd) | ![Screenshot2](https://github.com/MATF-Software-Verification/2023_massif_visualizer/assets/76535188/356b80a0-3067-4d12-a8c1-24d2f6fd4640) |
+| --- | --- |
+
 ### Single C/C++ File Analysis
 
 1. Choose the option to upload a single C or C++ source file.
@@ -63,6 +66,8 @@ It's recommended to use [VSCode](https://code.visualstudio.com/) as your editor 
 8. Select a snapshot that has a location in the code as a label to view the corresponding code in the code editor on the side.
 9. Analyze the graph and code to identify memory-related issues and optimize your program.
 
+![Screenshot3](https://github.com/MATF-Software-Verification/2023_massif_visualizer/assets/76535188/c709d88b-3fc3-4c1f-af3b-bb170c045226)
+
 ### Multiple Massif Files Comparison
 
 1. Choose the option to upload Massif file(s).
@@ -72,5 +77,7 @@ It's recommended to use [VSCode](https://code.visualstudio.com/) as your editor 
 5. On the Stats screen, each Massif file will have a separate line in the graph.
 6. Select a specific Massif file from the dropdown to view its snapshots.
 7. Use the snapshot range slider to focus on specific sections of the execution for all files.
+
+![Screenshot4](https://github.com/MATF-Software-Verification/2023_massif_visualizer/assets/76535188/a1d8100a-d91a-4c40-b04b-1d439f41d536)
 
 By utilizing this application, you can gain valuable insights into memory usage patterns, detect memory leaks, and optimize your C or C++ programs for better performance. Happy debugging!
