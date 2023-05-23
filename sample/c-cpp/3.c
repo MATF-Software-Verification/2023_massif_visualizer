@@ -1,24 +1,24 @@
 #include <stdlib.h>
 
-void allocate_memory() {
-    int size = 1000000;
-    int* array = malloc(size * sizeof(int));
+void allocate_memory(int condition) {
+    int size = 100;
+    int* array = NULL;
 
-    int sum = 0;
-    for (int i = 0; i < size; i++) {
-        array[i] = i;
-        sum += array[i];
+    if (condition) {
+        array = malloc(size * sizeof(int));
     }
 
-    int* leak = malloc(100 * sizeof(int));
+    int* l = malloc(50 * sizeof(int));
 
-    free(array);
+    if (array != NULL) {
+        free(array);
+    }
 }
 
 int main() {
-    allocate_memory();
+    allocate_memory(1);
+    allocate_memory(0);
 
-    int* leak = malloc(500 * sizeof(int));
 
     return 0;
 }
