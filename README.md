@@ -5,10 +5,11 @@
 Welcome to the Massif Visualizer repository. The goal of this project is to create a desktop app that will visualize the output of the [Massif](https://valgrind.org/docs/manual/ms-manual.html) tool. The app will be built using [Electron](https://www.electronjs.org/) and [React](https://reactjs.org/).
 
 People working on this project:
-Pavle Cvejović, 1068/2022
-Viktor Novaković, 1062/2022
+- Pavle Cvejović, 1068/2022
+- Viktor Novaković, 1063/2022
 
 Course professor: Milena Vujošević-Janičić
+
 Course assistant: Ivan Ristović
 
 ## Tech stack
