@@ -1,32 +1,45 @@
 #include <iostream>
 
-class MyClass {
+class BaseClass {
 public:
-    MyClass() {
-        std::cout << "MyClass constructor called" << std::endl;
+    virtual ~BaseClass() {}
+};
+
+class DerivedClass : public BaseClass {
+public:
+    DerivedClass() {
+        std::cout << "DerivedClass constructor called" << std::endl;
     }
 
-    ~MyClass() {
-        std::cout << "MyClass destructor called" << std::endl;
+    ~DerivedClass() {
+        std::cout << "DerivedClass destructor called" << std::endl;
     }
 };
 
-void allocate_memory() {
-    int size = 100;
-
-    MyClass* array = new MyClass[size];
-
-    MyClass* leak = new MyClass;
+void allocate_memory(int size) {
+    BaseClass** objects = new BaseClass*[size];
 
     for (int i = 0; i < size; i++) {
-        std::cout << "Array element: " << i << std::endl;
+        if (i % 2 == 0) {
+            objects[i] = new DerivedClass();
+        } else {
+            objects[i] = new BaseClass();
+        }
     }
+
+    BaseClass* leak = new DerivedClass();
+
+    for (int i = 0; i < size; i++) {
+        delete objects[i];
+    }
+
+    delete[] objects;
 }
 
 int main() {
-    allocate_memory();
+    allocate_memory(100);
 
-    MyClass* leak = new MyClass;
+    BaseClass* leak = new BaseClass();
 
     return 0;
 }
