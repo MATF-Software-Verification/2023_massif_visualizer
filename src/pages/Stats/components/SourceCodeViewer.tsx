@@ -13,7 +13,7 @@ const SourceCodeViewer = ({ sourceFile, sourceCode, selectedHeapNode }: ISourceC
   return (
     <div
       className={cn(
-        "h-full flex flex-row bg-foreground text-background overflow-auto",
+        "h-full flex flex-row bg-[#1e1e1e] text-background overflow-auto",
         sourceCode === "" ? "hidden" : "",
       )}
     >
