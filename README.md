@@ -88,7 +88,11 @@ In the directory `samples` you can find some test samples for the application. Y
 samples
 ├── c-cpp
 │   ├── 1.c
+│   ├── 2.c
+│   ├── 3.c
 │   └── 1.cpp
+│   └── 2.cpp
+│   └── 3.cpp
 └── massif
     ├── massif.out.32406
     ├── massif.out.huge
