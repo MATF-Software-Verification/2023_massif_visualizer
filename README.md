@@ -25,21 +25,18 @@ Course assistant: Ivan Ristović
 
 1. Clone the repository: `git clone https://github.com/MATF-Software-Verification/2023_massif_visualizer.git`
 2. Open the project folder with VSCode (or your preferred editor) and open the integrated terminal
-3. Install (or update) Python:
-   - On windows, download and install the latest version of Python from [here](https://www.python.org/downloads/).
-   - On linux, run the following commands:
-   - Install python: `sudo apt install python3`
-   - Install pip: `sudo apt install python3-pip`
-4. Install (or update) Node and NPM:
-   - On windows, download and install the latest version of Node from [here](https://nodejs.org/en/download/).
-   - On linux, run the following commands:
+3. Install the GNU compiler and debugger collection: `sudo apt install build-essential`
+4. Install Valgrind: `sudo apt install valgrind`
+5. Install (or update) Python: `sudo apt install python3`
+6. Install (or update) pip: `sudo apt install python3-pip`
+7. Install (or update) Node and NPM:
    - Install curl: `sudo apt install curl`
    - Install nvm: `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash`
    - Install node: `nvm install node`
    - Install npm: `nvm install-latest-npm`
-5. Install pnpm: `npm i -g pnpm`
-6. Install dependencies: `pnpm i`
-7. Install msparser: `pip install msparser`
+8. Install pnpm: `npm i -g pnpm`
+9. Install dependencies: `pnpm i`
+10. Install msparser: `pip install msparser`
 
 ## Development
 
