@@ -4,15 +4,16 @@ import { HeapNode } from "@/types/massif";
 import { cn } from "@/utils/styleUtils";
 
 interface ISourceCodeViewerProps {
+  sourceFile?: string;
   sourceCode: string;
   selectedHeapNode: HeapNode | undefined;
 }
 
-const SourceCodeViewer = ({ sourceCode, selectedHeapNode }: ISourceCodeViewerProps) => {
+const SourceCodeViewer = ({ sourceFile, sourceCode, selectedHeapNode }: ISourceCodeViewerProps) => {
   return (
     <div
       className={cn(
-        "h-full flex flex-row bg-foreground text-background overflow-auto",
+        "h-full flex flex-row bg-[#1e1e1e] text-background overflow-auto",
         sourceCode === "" ? "hidden" : "",
       )}
     >
@@ -25,7 +26,9 @@ const SourceCodeViewer = ({ sourceCode, selectedHeapNode }: ISourceCodeViewerPro
                 {...getLineProps({ line })}
                 className={cn(
                   "flex gap-4",
-                  i + 1 === selectedHeapNode?.details?.line && "bg-slate-500",
+                  sourceFile === selectedHeapNode?.details?.file &&
+                    i + 1 === selectedHeapNode?.details?.line &&
+                    "bg-slate-500",
                 )}
               >
                 <span>{i + 1}</span>

@@ -25,7 +25,11 @@ const Stats = () => {
         setSelectedHeapNode={setSelectedHeapNode}
       />
 
-      <SourceCodeViewer sourceCode={sourceCode} selectedHeapNode={selectedHeapNode} />
+      <SourceCodeViewer
+        sourceFile={labels[0]}
+        sourceCode={sourceCode}
+        selectedHeapNode={selectedHeapNode}
+      />
     </div>
   );
 };
