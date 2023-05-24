@@ -1,3 +1,5 @@
+import "chartjs-plugin-zoom";
+
 import {
   CategoryScale,
   Chart as ChartJS,
@@ -8,12 +10,22 @@ import {
   Title,
   Tooltip,
 } from "chart.js";
+import zoomPlugin from "chartjs-plugin-zoom";
 import { Line } from "react-chartjs-2";
 
 import { MassifSnapshot } from "@/types/massif";
 import { randomColors } from "@/utils/randomColors";
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  zoomPlugin,
+);
 
 export interface SnapshotMemorySeries {
   label: string;
@@ -30,6 +42,23 @@ const LineChart = (props: { data: SnapshotMemorySeries[] }) => {
       options={{
         responsive: true,
         maintainAspectRatio: false,
+        plugins: {
+          zoom: {
+            pan: {
+              enabled: true,
+              mode: "xy",
+            },
+            zoom: {
+              wheel: {
+                enabled: true,
+              },
+              pinch: {
+                enabled: true,
+              },
+              mode: "xy",
+            },
+          },
+        },
         scales: {
           x: {
             title: {
