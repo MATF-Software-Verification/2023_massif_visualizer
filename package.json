@@ -13,7 +13,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build && electron-builder -c.extraMetadata.main=dist-electron/main/index.js",
     "release": "electron-builder -c.snap.publish=github -p always -c.extraMetadata.main=dist-electron/main/index.js -- --publish always --linux",
     "preview": "vite preview",
     "pree2e": "vite build --mode=test",
