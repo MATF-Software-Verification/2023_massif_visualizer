@@ -32,6 +32,8 @@ jobs:
         run: pnpm run build
 
       - name: Create release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: pnpm run release
 
       - name: See directory
@@ -42,4 +44,4 @@ jobs:
         with:
           args: release/Massif Visualizer-1.0.0.AppImage
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
