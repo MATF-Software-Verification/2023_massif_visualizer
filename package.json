@@ -95,8 +95,11 @@
     "directories": {
       "output": "release"
     },
-    "publish": [
-      "github"
-    ]
+    "publish": {
+      "provider": "github",
+      "repo": "2023_massif_visualizer",
+      "owner": "MATF-Software-Verification",
+      "releaseType": "release"
+    },
   }
 }
