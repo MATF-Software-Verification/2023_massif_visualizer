@@ -1,9 +1,9 @@
 {
   "name": "electron-vite-project",
-  "version": "2.2.0",
+  "version": "1.0.0",
   "main": "dist-electron/main/index.js",
-  "description": "Electron Vite React boilerplate.",
-  "author": "草鞋没号 <308487730@qq.com>",
+  "description": "Massif Visualizer",
+  "author": "Pavle Cvejovic <pavle.cvejovic9999@gmail.com>",
   "license": "MIT",
   "private": true,
   "debug": {
@@ -13,7 +13,8 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && electron-builder",
+    "build": "tsc && vite build",
+    "release": "electron-builder -c.snap.publish=github -p always -c.extraMetadata.main=dist-electron/main/index.js -- --publish always --linux",
     "preview": "vite preview",
     "pree2e": "vite build --mode=test",
     "e2e": "playwright test",
@@ -84,5 +85,23 @@
   },
   "engines": {
     "node": "^14.18.0 || >=16.0.0"
+  },
+  "build": {
+    "appId": "com.massifvisualizer.app",
+    "productName": "Massif Visualizer",
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "publish": {
+      "provider": "github",
+      "repo": "2023_massif_visualizer",
+      "owner": "MATF-Software-Verification",
+      "releaseType": "release"
+    }
   }
 }
