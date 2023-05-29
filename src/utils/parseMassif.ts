@@ -39,7 +39,7 @@ export const parseMassif: (
   massifFilePaths: string[],
   setMassifOutputsWithError: React.Dispatch<React.SetStateAction<MassifOutputsWithError>>,
 ) => void = (massifFilePaths, setMassifOutputsWithError) => {
-  exec(`python3 src/utils/parser.py ${massifFilePaths.join(" ")}`, (error, stdout, stderr) => {
+  exec(`python3 src/utils/parser.py ${massifFilePaths.join(" ")}`, {maxBuffer: Infinity}, (error, stdout, stderr) => {
     if (error) {
       setMassifOutputsWithError({ error: error.message, massifOutputs: [] });
     } else {
