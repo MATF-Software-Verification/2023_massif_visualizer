@@ -36,14 +36,20 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: pnpm run release
 
+      - name: Copy AppImage and Python script to a new directory
+        run: mkdir prepare && cp release/*.AppImage prepare && cp src/utils/*.py prepare/src/utils
+
+      - name: Zip the prepare directory
+        run: zip -r prepare.zip prepare
+
       - name: See directory
-        run: ls -la && ls -la release
+        run: ls -la && ls -la prepare
 
       - name: Upload to release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: release/latest-linux.yml
-          asset_name: testname
+          file: prepare.zip
+          asset_name: Release
           overwrite: true
           body: "This is my release text"
