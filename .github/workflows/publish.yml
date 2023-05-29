@@ -37,7 +37,7 @@ jobs:
         run: pnpm run release
 
       - name: Copy AppImage and Python script to a new directory
-        run: mkdir prepare && cp release/*.AppImage prepare && mkdir prepare/src && mkdir prepare/src/utils && cp src/utils/*.py prepare/src/utils && cd prepare && mkdir temp
+        run: mkdir prepare && cp -r release/* prepare && mkdir prepare/src && mkdir prepare/src/utils && cp src/utils/*.py prepare/src/utils && cd prepare && mkdir temp
 
       - name: Zip the prepare directory
         run: zip -r prepare.zip prepare
