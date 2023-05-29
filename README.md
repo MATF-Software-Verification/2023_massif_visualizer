@@ -12,6 +12,18 @@ Course professor: Milena Vujošević-Janičić
 
 Course assistant: Ivan Ristović
 
+## How to start
+
+1. Download [Release.zip](https://github.com/MATF-Software-Verification/2023_massif_visualizer/releases/download/main/Release) from Releases page
+2. Unzip
+3. Install the required libraries
+   - Install the GNU compiler and debugger collection: `sudo apt install build-essential`
+   - Install Valgrind: `sudo apt install valgrind`
+   - Install (or update) Python: `sudo apt install python3`
+   - Install (or update) pip: `sudo apt install python3-pip`
+   - Install Fuse library: `sudo apt install fuse libfuse2`
+4. Start the `.AppImage` executable using VSCode terminal from the `prepare` folder inside the unzipped folder
+
 ## Tech stack
 
 - [Electron](https://www.electronjs.org/) - a framework for building cross-platform desktop apps with JavaScript, HTML, and CSS. Used to build the desktop app.
