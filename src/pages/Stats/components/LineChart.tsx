@@ -55,7 +55,7 @@ const LineChart = (props: { data: SnapshotMemorySeries[] }) => {
               pinch: {
                 enabled: true,
               },
-              mode: "xy",
+              mode: "y",
             },
           },
         },
