@@ -44,10 +44,6 @@ const LineChart = (props: { data: SnapshotMemorySeries[] }) => {
         maintainAspectRatio: false,
         plugins: {
           zoom: {
-            pan: {
-              enabled: true,
-              mode: "xy",
-            },
             zoom: {
               wheel: {
                 enabled: true,
