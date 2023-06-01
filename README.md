@@ -21,6 +21,7 @@ Course assistant: Ivan Ristović
    - Install Valgrind: `sudo apt install valgrind`
    - Install (or update) Python: `sudo apt install python3`
    - Install (or update) pip: `sudo apt install python3-pip`
+   - Install msparser module: `pip instsall msparser`
    - Install Fuse library: `sudo apt install fuse libfuse2`
 4. Start the `.AppImage` executable using VSCode terminal from the `prepare` folder inside the unzipped folder
 
