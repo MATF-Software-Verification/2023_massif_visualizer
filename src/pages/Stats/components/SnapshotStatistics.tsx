@@ -35,7 +35,7 @@ const SnapshotStatistics = ({
   return (
     <div className="flex flex-col flex-1 mt-10 ml-10 px-4 pb-8 gap-8">
       <div className="flex flex-row gap-4">
-        <Card className="h-full flex-grow">
+        <Card className="h-full flex-1 basis-2/3">
           <CardHeader>
             <CardTitle>Heap tree Snapshots</CardTitle>
             <CardDescription>Snapshots of the heap tree</CardDescription>
@@ -54,7 +54,7 @@ const SnapshotStatistics = ({
             )}
           </CardContent>
         </Card>
-        <div className="flex flex-col gap-12 flex-grow">
+        <div className="flex flex-col gap-12 flex-1 basis-1/3">
           <Card className="w-full h-fit">
             <CardHeader>
               <CardTitle>Choose snapshot range</CardTitle>
